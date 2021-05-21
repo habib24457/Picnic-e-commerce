@@ -1,0 +1,11 @@
+.button-design{
+    width: 380px;
+    height: 80px;
+    margin-top: 15px;
+    background-color: rgb(74, 23, 190);
+    border-radius:2.5%;
+    color:#ffffff;
+    font-size:1.5rem;
+    border:none;
+
+}
