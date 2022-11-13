@@ -7,6 +7,8 @@ import Footer from "../Footer/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { API } from "../Constant/Constant";
+import home from "../../images/home.png";
+import PuffLoader from "react-spinners/PuffLoader";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -34,19 +36,41 @@ const Home = () => {
               <Nav>
                 <Nav.Link href="/home">Home</Nav.Link>
                 <Nav.Link href="/order">Orders</Nav.Link>
-                <Nav.Link href="/continue">Admin</Nav.Link>
+                <Nav.Link href="/update">Admin</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Navbar>
         </div>
       </div>
+      <div
+        style={{
+          backgroundImage: `url(${home})`,
+          height: "60vh",
+          width: "100vw",
+          display: "block",
+          backgroundRepeat: "no-repeat",
+          overflow: "hidden",
+        }}
+        className="row mb-5 d-flex"
+      >
+        <div className="col-md-6"></div>
+
+        <div className="col-md-6 mt-5 pt-5">
+          <div style={{ display: "flex" }}>
+            <p className="text-design">PICNIC</p>
+            <PuffLoader color="#36d7b7" size="50" />
+          </div>
+          <p className="text-design">Best Online Market!</p>
+        </div>
+      </div>
+
       {!done ? (
         <div className="row justify-content-center mt-5 pt-5">
           <ReactLoading
             type={"spin"}
             color={"green"}
-            height={200}
-            width={200}
+            height={100}
+            width={100}
           />
         </div>
       ) : (

@@ -22,6 +22,10 @@ const ProceedOrder = () => {
   const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
+    getOrderByEmail();
+  }, [userMail]);
+
+  const getOrderByEmail = () => {
     fetch(API + `/orders/${userMail}`)
       .then((res) => res.json())
       .then((data) => {
@@ -29,7 +33,7 @@ const ProceedOrder = () => {
         calculatePrice(data);
       })
       .catch((err) => console.log(err));
-  }, [userMail]);
+  };
 
   const removeItem = (id) => {
     fetch(API + `/removeItem/${id}`, {
@@ -38,6 +42,7 @@ const ProceedOrder = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
+        getOrderByEmail();
       })
       .catch((err) => console.log(err));
   };

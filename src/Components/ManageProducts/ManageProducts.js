@@ -18,6 +18,7 @@ const ManageProducts = () => {
       weight: data.productWeight,
       imageURL: imageURL,
     };
+    console.log(productData);
     const url = API + "/addProduct";
     fetch(url, {
       method: "POST",

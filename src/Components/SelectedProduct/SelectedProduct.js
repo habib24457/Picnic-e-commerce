@@ -28,7 +28,7 @@ const SelectedProduct = () => {
       name: products[0].name,
       price: products[0].price,
       quantity: 1,
-      email: sessionStorage.getItem("email"),
+      email: sessionStorage.getItem("email") || loggedinUser.email,
       orderTime: new Date(),
     };
 
@@ -41,7 +41,7 @@ const SelectedProduct = () => {
     })
       .then((response) => {
         console.log("Server", response);
-        //window.location.reload();
+        window.location.reload();
       })
       .catch((err) => console.log(err));
   };
