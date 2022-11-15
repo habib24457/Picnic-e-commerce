@@ -45,7 +45,7 @@ const Home = () => {
       <div
         style={{
           backgroundImage: `url(${home})`,
-          height: "60vh",
+          height: "45vh",
           width: "100vw",
           display: "block",
           backgroundRepeat: "no-repeat",
@@ -64,17 +64,36 @@ const Home = () => {
         </div>
       </div>
 
+      <div className="row">
+        <div className="col-md-12">
+          <hr />
+
+          <p className="available-prod-txt text-center">Available Products</p>
+          <hr />
+        </div>
+      </div>
+
       {!done ? (
-        <div className="row justify-content-center mt-5 pt-5">
-          <ReactLoading
-            type={"spin"}
-            color={"green"}
-            height={100}
-            width={100}
-          />
+        <div className="row justify-content-center mt-2 pt-2 mb-5 pb-5">
+          <div className="col-md-4"></div>
+          <div className="col-md-4 text-center">
+            <p>
+              If it takes too long to load, please reload the page or clear your
+              browser cache.
+            </p>
+            <div className="text-center ml-5 pl-5">
+              <ReactLoading
+                type={"spin"}
+                color={"green"}
+                height={100}
+                width={100}
+              />
+            </div>
+          </div>
+          <div className="col-md-4"></div>
         </div>
       ) : (
-        <div className="row justify-content-center mt-3 pt-5 mb-5">
+        <div className="row justify-content-center mt-2 pt-2 mb-5">
           {products.map((product) => (
             <div>
               <Card

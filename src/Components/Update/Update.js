@@ -47,13 +47,13 @@ const Update = () => {
       .catch((err) => console.log(err));
   };
 
-  const updateItem = (id) => {
-    //e.preventDefault();
+  const updateItem = (id, event) => {
+    event.preventDefault();
     //console.log("update..", id);
     const name = document.getElementById("product-name").value;
     const price = document.getElementById("product-price").value;
     const weight = document.getElementById("product-weight").value;
-    const product = { id, name, price, weight, imageURL };
+    const product = { name, price, weight, imageURL };
     console.log(product);
     fetch(API + `/update/${id}`, {
       method: "PUT",
@@ -221,8 +221,8 @@ const Update = () => {
                     Back
                   </button>
                   <button
-                    onClick={() => {
-                      updateItem(updateProduct._id);
+                    onClick={(event) => {
+                      updateItem(updateProduct._id, event);
                     }}
                     className="btn btn-success"
                   >

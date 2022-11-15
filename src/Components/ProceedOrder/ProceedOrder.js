@@ -23,6 +23,7 @@ const ProceedOrder = () => {
 
   useEffect(() => {
     getOrderByEmail();
+    // eslint-disable-next-line
   }, [userMail]);
 
   const getOrderByEmail = () => {
