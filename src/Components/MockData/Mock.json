@@ -1,0 +1,21 @@
+[{
+    "id": 1,
+    "name": "Honey - Lavender",
+    "price": 1,
+    "weight": 1,
+    "imageURL": "https://i.ibb.co/pRP8xBV/honey.jpg"
+  }, {
+    "id": 2,
+    "name": "Energy Drink - Franks Original",
+    "price": 2,
+    "weight": 1,
+    "imageURL": "https://i.ibb.co/WcNGM9n/energy.png"
+  }, {
+    "id": 3,
+    "name": "Wine - Dubouef Macon - Villages",
+    "price": 3,
+    "weight": 3,
+    "imageURL": "https://i.ibb.co/2K3cd5F/wine.jpg"
+  }
+]
+  

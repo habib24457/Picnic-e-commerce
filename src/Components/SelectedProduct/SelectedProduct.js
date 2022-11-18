@@ -6,6 +6,7 @@ import Footer from "../Footer/Footer";
 import CommonNav from "../CommonNav/CommonNav";
 import { Link } from "react-router-dom";
 import { API } from "../Constant/Constant";
+import MockData from "../MockData/Mock.json";
 
 const SelectedProduct = () => {
   let { productId } = useParams();
@@ -13,13 +14,30 @@ const SelectedProduct = () => {
   const [loggedinUser] = useContext(UserContext);
 
   useEffect(() => {
-    fetch(API + `/singleProduct/${productId}`)
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
+    getSingleProduct();
+    // eslint-disable-next-line
   }, [productId]);
 
-  console.log(products);
-  console.log(loggedinUser);
+  const getSingleProduct = () => {
+    fetch(API + `/singleProduct/${productId}`)
+      .then((res) => res.json())
+      .then((data) => {
+        //console.log("Res", data);
+        setProducts(data);
+      })
+      .catch((err) => {
+        if (err) {
+          console.log("yes");
+          // eslint-disable-next-line
+          const mockProd = MockData.filter((prod) => prod.id == productId);
+          setProducts(mockProd);
+          console.log(productId, mockProd);
+        }
+      });
+  };
+
+  //console.log(products);
+  //console.log(loggedinUser);
 
   /**add every single ordered product to the database with email */
   const uploadSelectedProduct = (products) => {

@@ -9,20 +9,29 @@ import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { API } from "../Constant/Constant";
 import home from "../../images/home.png";
 import PuffLoader from "react-spinners/PuffLoader";
+import MockData from "../MockData/Mock.json";
+// import energy from "../../images/prodImg/energy.png";
+// import wine from "../../images/prodImg/wine.jpeg";
+// import honey from "../../images/prodImg/honey.jpeg";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [done, setDone] = useState(false);
 
   useEffect(() => {
-    fetch(API + "/products")
+    //console.log(MockData);
+    getProduct();
+  }, []);
+
+  const getProduct = async () => {
+    await fetch(API + "/products")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
         setDone(true);
       })
       .catch((err) => console.log(err));
-  }, []);
+  };
 
   return (
     <Container>
@@ -71,6 +80,31 @@ const Home = () => {
           <p className="available-prod-txt text-center">Available Products</p>
           <hr />
         </div>
+      </div>
+
+      <div className="row justify-content-center mt-2 pt-2 mb-5 pb-5">
+        {MockData.map((mockProd) => (
+          <div>
+            <Card
+              className="p-3 m-3"
+              style={{ width: "18rem", height: "30rem" }}
+            >
+              <Card.Img variant="top" src={mockProd.imageURL} />
+              <Card.Body>
+                <Card.Title>{mockProd.name}</Card.Title>
+                <Card.Text>Price:{mockProd.price}$</Card.Text>
+                <Card.Text>Weight:{mockProd.weight}</Card.Text>
+
+                <Link to={`/selectedProduct/${mockProd.id}`}>
+                  <Button className="buy-button">
+                    <FontAwesomeIcon icon={faShoppingCart} size="1x" />
+                    Add to cart
+                  </Button>
+                </Link>
+              </Card.Body>
+            </Card>
+          </div>
+        ))}
       </div>
 
       {!done ? (
